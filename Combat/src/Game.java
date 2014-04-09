@@ -14,7 +14,7 @@ public class Game
     {
     	this.game = (MyGame)this;
     	running = true;
-        frame = new JFrame("Java Game Development");
+        frame = new JFrame("Combat 6200");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gamePanel = new GamePanel();
         frame.getContentPane().add(BorderLayout.CENTER, gamePanel);
@@ -38,6 +38,7 @@ public class Game
            game.update();
             try { Thread.sleep(10); }
             catch (Exception e) { e.printStackTrace(); }
+            
             frame.repaint();
         }
     }

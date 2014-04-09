@@ -4,14 +4,26 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+//Sprite Array Values
+	// 0 == right
+	// 1 == downRight
+	// 2 == down
+	// 3 == downLeft
+	// 4 == left
+	// 5 == upLeft
+	// 6 == up
+	// 7 == upRight
 
 public class player 
 {
 // Instance variables
 	private int _speed;
 	private boolean _alive;
-	private int _deadTimer;
+	private int _deadTime;
 	private int rotation;
+	public BufferedImage[] _spriteSheet = new BufferedImage[8];
+	public BufferedImage _mySprite = null;
+	
 	
 // Constructor
 	public player(int playerNo, int x, int y)
@@ -19,16 +31,23 @@ public class player
 		// Initializes instance variables
 		_speed = 5;
 		_alive = true;
-		_deadTimer = 3;
+		_deadTime = 3000; // Milliseconds
+		
+		// Slices the spritesheet
+		try {
+			_spriteSheet = sliceSheet();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		// Sets rotation for each player
 		if(playerNo == 1)
 		{
-			rotation = 0;
+			_mySprite = _spriteSheet[0];
 		}
 		else if(playerNo == 2)
 		{
-			rotation = 180;
+			_mySprite = _spriteSheet[4];
 		}
 		
 	}
@@ -75,5 +94,10 @@ public class player
 	{
 		this._alive = false;
 		//Rotate in random direction for _deadTime
+	}
+	
+	public void updateRotation()
+	{
+		//if(rotation == 90) 
 	}
 }
