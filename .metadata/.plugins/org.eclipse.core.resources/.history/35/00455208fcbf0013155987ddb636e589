@@ -1,0 +1,12 @@
+
+public class player {
+	//Instance variables
+	private int speed;
+	private boolean alive;
+	
+	//Constructor
+	public Player(int x, int y){
+		speed = 5;
+		alive = true;
+	}
+}

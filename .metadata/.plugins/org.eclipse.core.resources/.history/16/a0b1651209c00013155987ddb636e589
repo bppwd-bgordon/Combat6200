@@ -1,0 +1,36 @@
+
+public class player 
+{
+// Instance variables
+	private int _speed;
+	private boolean _alive;
+	private int _deadTimer;
+	private int rotation;
+	
+// Constructor
+	public player(int playerNo, int x, int y)
+	{
+		_speed = 5;
+		_alive = true;
+		(if playerNo == 1){
+			
+		}
+	}
+	
+// Methods
+	// Getters
+	public int getSpeed(){return this._speed;}
+	public boolean getAlive(){return this._alive;}
+	
+	// Setters
+	public void setSpeed(int speed)
+	{
+		if(speed >= 0 && speed <= 10) this._speed = speed; 
+		else return;
+	}
+	public void kill()
+	{
+		this._alive = false;
+		//Rotate in random direction for _deadTime
+	}
+}

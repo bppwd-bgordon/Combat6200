@@ -1,0 +1,15 @@
+
+public class player {
+	// Instance variables
+	private int _speed;
+	private boolean _alive;
+	
+	// Constructor
+	public player(int playerNo, int x, int y){
+		_speed = 5;
+		_alive = true;
+	}
+	
+	// Methods
+	public int getSpeed(){return this._speed;}
+}

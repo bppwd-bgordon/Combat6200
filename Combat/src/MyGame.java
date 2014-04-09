@@ -1,0 +1,30 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
+
+public class MyGame extends Game {
+
+	// Represents the x coordinate of our Rectangle
+	public int x = 0;
+	public boolean turn = false;
+	
+	public MyGame() {
+		
+	}
+
+	public void draw(Graphics buffer) {
+		// sets the drawing color
+		buffer.setColor(Color.BLUE);
+		// draws a "filled" 50x50 rectangle at position (x,100)
+		buffer.fillRect(x, 100, 50, 50);
+	}
+	
+	public void update() {
+		// increases x by 5 each iteration through the game loop
+		if(x + 50 >= 1200) turn = true;
+		else if(x <= 0) turn = false;
+		
+		if(turn) x -= 5;
+		else x += 5;
+	}
+}

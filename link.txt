@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/621835/how-to-extract-part-of-this-image-in-java

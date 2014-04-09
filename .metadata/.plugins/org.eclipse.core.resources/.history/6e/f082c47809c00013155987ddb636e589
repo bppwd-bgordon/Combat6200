@@ -1,0 +1,47 @@
+import java.applet.Applet;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+
+@SuppressWarnings("serial")
+public class Game extends Applet implements Runnable {
+
+	private Thread gameThread;
+	protected boolean running;
+	protected Graphics buffer;
+	protected Image image;
+	protected Dimension winSize;
+	private MyGame game;
+	
+	public void init(MyGame game, int width, int height) {
+		this.game = game;
+		running = true;
+		this.setSize(width, height);
+		winSize = getSize();
+		image = createImage(winSize.width, winSize.height);
+		buffer = image.getGraphics();
+		gameThread = new Thread(this);
+		gameThread.start();
+	}
+	
+	public void paint(Graphics g) {
+		buffer.clearRect(0, 0, winSize.width, winSize.height);
+		game.draw(buffer);
+		g.drawImage(image,0,0,this);
+	}
+
+	@Override
+	public void run() {
+		while(running) {
+			game.update();
+			repaint();
+			try {
+				Thread.sleep(20);
+			} catch(InterruptedException e) {
+				System.out.println(e);
+			}
+		}
+	}
+	
+	
+}
