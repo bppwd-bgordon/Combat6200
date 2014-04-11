@@ -1,26 +1,14 @@
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
-//Sprite Array Values
-	// 0 == right
-	// 1 == downRight
-	// 2 == down
-	// 3 == downLeft
-	// 4 == left
-	// 5 == upLeft
-	// 6 == up
-	// 7 == upRight
 
 public class player 
 {
 // Instance variables
 	private int _speed;
 	private boolean _alive;
-	private int _deadTime;
-	private int rotation;
+	//private int _deadTime;
+	//private int rotation;
 	public BufferedImage[] _spriteSheet = new BufferedImage[8];
 	public BufferedImage _mySprite = null;
 	
@@ -31,11 +19,11 @@ public class player
 		// Initializes instance variables
 		_speed = 5;
 		_alive = true;
-		_deadTime = 3000; // Milliseconds
+		//_deadTime = 3000; // Milliseconds
 		
 		// Slices the spritesheet
 		try {
-			_spriteSheet = sliceSheet();
+			_spriteSheet = BufferedImageLoader.SliceSheet("Sprites/player8.png", 225, 225, 2, 4);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -53,33 +41,6 @@ public class player
 	}
 	
 // Methods
-	//Slice sprite sheet
-	private BufferedImage[] sliceSheet() throws IOException
-	{
-		BufferedImage bigImg = ImageIO.read(new File("player.png"));
-		
-		final int width = 9;
-		final int height = 9;
-		final int rows = 2;
-		final int columns = 4;
-		BufferedImage[] sprites = new BufferedImage[rows * columns];
-		
-		for (int i = 0; i < rows; i++)
-		{
-			for(int j = 0; j < columns; j++)
-			{
-				sprites[(i * columns) + j] = bigImg.getSubimage(
-					j * width,
-					i * height,
-					width,
-					height
-				);
-			}
-		}
-		
-		return sprites;
-	}
-	
 	// Getters
 	public int getSpeed(){return this._speed;}
 	public boolean getAlive(){return this._alive;}

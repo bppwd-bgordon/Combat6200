@@ -1,7 +1,4 @@
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 
 public class MyGame extends Game {
@@ -18,14 +15,11 @@ public class MyGame extends Game {
 
 	
 	public void draw(Graphics buffer) {
-		buffer.drawImage(player1._mySprite, 100, 100, null);
-		buffer.setColor(Color.RED);
-		buffer.fillRect(x, 100, 50, 50);
-		
+		buffer.drawImage(player1._mySprite, 100, 100, null);	
 	}
 	
 	public void update() {
 		//Call tank movement methods here!
-		
+		player1._mySprite = player1._spriteSheet[]
 	}
 }
